@@ -159,3 +159,5 @@ $RECYCLE.BIN/
 
 # Husky
 .husky
+# Vercel
+.vercel
