@@ -10,7 +10,6 @@ const { createUserMovieSchema } = require('../utils/schemas/userMovies');
 const scopesValidationHandler = require('../utils/middleware/scopesValidationHandler');
 const validationHandler = require('../utils/middleware/validationHandler');
 
-
 // JWT Strategy
 require('../utils/auth/strategies/jwt');
 
@@ -52,13 +51,15 @@ function userMoviesApi(app) {
       const { body: userMovie } = req;
 
       try {
-        const createUserMovieId = await userMoviesService.createUserMovie({
+        const createdUserMovieId = await userMoviesService.createUserMovie({
           userMovie,
         });
+
         res.status(201).json({
-          data: createUserMovieId,
+          data: createdUserMovieId,
           message: 'user movie created',
         });
+        
       } catch (error) {
         next(error);
       }
